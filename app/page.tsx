@@ -18,7 +18,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: { absolute: `${site.name} | Web development by ${site.owner}` },
   description:
-    "Freelance developer Danilo Stoletović builds fast, clean websites, web apps and Android apps that bring in clients, delivered on time. Book a call.",
+    "Freelance developer Danilo Stoletovic builds fast, clean websites, web apps and Android apps that bring in clients, delivered on time. Book a call.",
   path: "/",
 });
 

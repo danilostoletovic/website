@@ -2,7 +2,7 @@
 
 **Got a plan? Dan's your man.**
 
-Source for [dandelivers.com](https://dandelivers.com), the sales and portfolio site of Dan Delivers: freelance developer Danilo Stoletović building websites, custom web apps, AI integrations and Android apps for clients in Serbia and internationally.
+Source for [dandelivers.dev](https://dandelivers.dev), the sales and portfolio site of Dan Delivers: freelance developer Danilo Stoletovic building websites, custom web apps, AI integrations and Android apps for clients in Serbia and internationally.
 
 The site's job is to get Dan hired: show the services, prove them with case studies, press and client words, and make contact effortless. Visitors can book a call through Cal.com, message on WhatsApp, or send an email.
 
@@ -61,7 +61,7 @@ To add a service or case study, add an entry to its `content/` file. The page, s
 
 ## Deployment
 
-Vercel builds every push. The production branch deploys to dandelivers.com; other branches get preview URLs.
+Vercel builds every push. The production branch deploys to dandelivers.dev; other branches get preview URLs.
 
 ## Working with AI coding agents
 

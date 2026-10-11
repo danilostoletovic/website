@@ -11,7 +11,7 @@ export const ensureStatic = "navigation";
 export const metadata: Metadata = pageMetadata({
   title: { absolute: `About ${site.owner} | ${site.name}` },
   description:
-    "I'm Danilo Stoletović, the freelance developer behind Dan Delivers. No agency overhead, no handoffs: you work directly with me from first call to launch.",
+    "I'm Danilo Stoletovic, the freelance developer behind Dan Delivers. No agency overhead, no handoffs: you work directly with me from first call to launch.",
   path: "/about",
 });
 
@@ -47,7 +47,7 @@ export default function AboutPage() {
           About
         </p>
         <h1 className="mt-5 font-display text-[clamp(3rem,11vw,9rem)] leading-[0.85] tracking-tight uppercase">
-          I&apos;m {site.fullName}.{" "}
+          I&apos;m {site.owner}.{" "}
           <span className="block text-accent">Call me Dan.</span>
         </h1>
         <p className="mt-10 max-w-3xl border-l-8 border-accent pl-6 text-2xl leading-snug sm:text-3xl">
@@ -124,7 +124,7 @@ export default function AboutPage() {
             Press &amp; recognition
           </h2>
           <p className="mt-4 text-muted">
-            Coverage and official results for {site.fullName}. Not endorsements.
+            Coverage and official results for {site.owner}. Not endorsements.
           </p>
           <ul className="mt-10 divide-y divide-line border-y border-line">
             {press.map((item) => (

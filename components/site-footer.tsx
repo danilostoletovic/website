@@ -12,7 +12,7 @@ export function SiteFooter() {
             <Wordmark size="lg" />
           </Link>
           <p className="mt-4 text-muted">
-            Freelance developer {site.fullName}. Working remotely with clients
+            Freelance developer {site.owner}. Working remotely with clients
             in Serbia and internationally.
           </p>
         </div>

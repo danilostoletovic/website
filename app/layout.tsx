@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: `%s | ${site.name} by ${site.owner}`,
   },
   description:
-    "Freelance developer Danilo Stoletović builds fast, clean websites, web apps and Android apps that bring in clients, delivered on time.",
+    "Freelance developer Danilo Stoletovic builds fast, clean websites, web apps and Android apps that bring in clients, delivered on time.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

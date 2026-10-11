@@ -8,13 +8,13 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-# Dan Delivers — dandelivers.com
+# Dan Delivers — dandelivers.dev
 
-Sales and portfolio site for "Dan Delivers", the brand and social handle of Danilo "Dan" Stoletović, a solo freelance developer. Its job: get Dan hired and rank for what clients actually search. Content and SEO beat perfect Lighthouse scores. English only.
+Sales and portfolio site for "Dan Delivers", the brand and social handle of Danilo "Dan" Stoletovic, a solo freelance developer. Its job: get Dan hired and rank for what clients actually search. Content and SEO beat perfect Lighthouse scores. English only.
 
 ## Brand and voice
 
-- Brand everywhere a visitor sees a name (header, footer, metadata, `og:site_name`): **Dan Delivers**. Full name **Danilo Stoletović** in the bio, structured data and press. Page titles use "Danilo Stoletovic" (no diacritic) so name searches still find the site; JSON-LD lists both spellings.
+- Brand everywhere a visitor sees a name (header, footer, metadata, `og:site_name`): **Dan Delivers**. Full name **Danilo Stoletovic** (`site.owner`), always without the diacritic, so it matches how people search. JSON-LD keeps "Danilo Stoletović" only as an `alternateName`.
 - Headline, exact wording: **"Got a plan? Dan's your man."** Defined once in `lib/site.ts` (`site.headline`); never retype it.
 - The headline will later vary by traffic source (`?src=`), resolved on the server. Cache Components is on, so read `searchParams` only inside `components/hero-headline.tsx`, wrap it in `<Suspense>` with the default headline as the fallback, and keep the rest of the page in the static shell. See `node_modules/next/dist/docs/01-app/02-guides/optimizing-the-static-shell.md`.
 - Solo freelancer, not an agency: first person ("I"), never "we" or "our team". Direct access, no handoffs.
@@ -66,7 +66,7 @@ Before every commit, `bun run lint --max-warnings 0` and `bun run build` must bo
 
 ## SEO
 
-- `metadataBase` is `https://dandelivers.com` (`app/layout.tsx`). Unique `title` and `description` per page through `pageMetadata()`.
+- `metadataBase` is `https://dandelivers.dev` (`app/layout.tsx`). Unique `title` and `description` per page through `pageMetadata()`.
 - One `<h1>` per page, semantic HTML, descriptive `alt` text, `next/image` and `next/font`.
 - JSON-LD: `Person` on About, `Service` on service pages. See `node_modules/next/dist/docs/01-app/02-guides/json-ld.md`.
 

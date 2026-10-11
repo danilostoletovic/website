@@ -17,8 +17,9 @@ export function personJsonLd() {
   return {
     "@type": "Person",
     "@id": `${site.url}/about#person`,
-    name: site.fullName,
-    alternateName: [site.owner, "Dan", site.name],
+    name: site.owner,
+    // Native spelling kept as an alias so searches with the diacritic match.
+    alternateName: ["Danilo Stoletović", "Dan", site.name],
     jobTitle: "Freelance developer",
     url: `${site.url}/about`,
     email: site.email,

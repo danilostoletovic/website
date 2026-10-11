@@ -42,7 +42,7 @@ export default function OpengraphImage() {
           </div>
         </div>
         <div style={{ display: "flex", fontSize: 30, color: "#a8a8b3" }}>
-          {`Websites · Web apps · Android apps · by ${site.fullName}`}
+          {`Websites · Web apps · Android apps · by ${site.owner}`}
         </div>
       </div>
     ),

@@ -1,11 +1,9 @@
 export const site = {
   name: "Dan Delivers",
-  // ASCII spelling for page titles, so name searches without the diacritic
-  // still match.
+  // Full name everywhere, spelled without the diacritic so it matches how
+  // people type it into search. JSON-LD also lists "Stoletović" as an alias.
   owner: "Danilo Stoletovic",
-  // Full name for the bio, structured data and press.
-  fullName: "Danilo Stoletović",
-  url: "https://dandelivers.com",
+  url: "https://dandelivers.dev",
   headline: "Got a plan? Dan's your man.",
   email: "contact@danilostoletovic.com",
   // Cal.com username/path. The contact section opens it as a popup; every
