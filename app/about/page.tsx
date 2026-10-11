@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { BookCallButton } from "@/components/book-call-button";
 import { ContactLinks } from "@/components/contact-links";
+import { award, press } from "@/content/proof";
 import { JsonLd, personJsonLd } from "@/lib/json-ld";
 import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
@@ -10,88 +11,158 @@ export const ensureStatic = "navigation";
 export const metadata: Metadata = pageMetadata({
   title: { absolute: `About ${site.owner} | ${site.name}` },
   description:
-    "I'm Danilo Stoletovic, a freelance web developer. No agency overhead, no handoffs: you work directly with me from first call to launch.",
+    "I'm Danilo Stoletović, the freelance developer behind Dan Delivers. No agency overhead, no handoffs: you work directly with me from first call to launch.",
   path: "/about",
 });
 
+const facts = [
+  { value: "3+ years", label: "taking software from idea to release" },
+  { value: award.short, label: "10th Galaksija Cup National STEM Championship" },
+  { value: "2nd place", label: "AI assistant competition, Make IT Day @ MET 2026" },
+  { value: "5.00 GPA", label: "Electrical & Computer Science, ETŠ Nikola Tesla" },
+];
+
 const principles = [
   {
-    title: "You talk to the person doing the work",
+    title: "You talk to the builder",
     body: "No account managers and no handoffs. Questions go straight to me, and so do the answers.",
   },
   {
-    title: "Your problem comes first",
-    body: "I start with what's costing you clients or time, then pick the simplest build that fixes it.",
+    title: "No spec? No problem",
+    body: "Tell me the problem in plain words. I explain the approach, and we agree on scope before I build.",
   },
   {
-    title: "I ship",
-    body: "Plans change and things break. My job is to deliver anyway, and to tell you early if something moves.",
+    title: "Working delivery, clear handover",
+    body: "You get the agreed result running, plus a handover you can understand. Maintenance is part of the conversation, not a surprise.",
   },
 ];
 
 export default function AboutPage() {
   return (
-    <article className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+    <article>
       <JsonLd data={{ "@context": "https://schema.org", ...personJsonLd() }} />
 
-      <header className="max-w-4xl">
-        <p className="text-sm font-semibold tracking-[0.2em] text-accent uppercase">
+      <header className="mx-auto max-w-7xl px-5 pt-14 pb-16 sm:px-8 sm:pt-20">
+        <p className="inline-block bg-accent px-2 py-1 text-sm font-bold tracking-[0.2em] text-accent-ink uppercase">
           About
         </p>
-        <h1 className="mt-4 font-display text-[clamp(2.5rem,8vw,6rem)] leading-[0.95] font-extrabold tracking-[-0.04em] text-balance">
-          I&apos;m {site.owner}. Most people call me Dan.
+        <h1 className="mt-5 font-display text-[clamp(3rem,11vw,9rem)] leading-[0.85] tracking-tight uppercase">
+          I&apos;m {site.fullName}.{" "}
+          <span className="block text-accent">Call me Dan.</span>
         </h1>
-        <p className="mt-8 border-l-4 border-accent pl-5 text-xl leading-relaxed sm:text-2xl">
+        <p className="mt-10 max-w-3xl border-l-8 border-accent pl-6 text-2xl leading-snug sm:text-3xl">
           No agency overhead, no handoffs. You work directly with me from first
           call to launch.
         </p>
       </header>
 
-      <div className="mt-16 max-w-3xl space-y-6 text-lg leading-relaxed sm:text-xl">
-        <p>
-          I&apos;m a freelance web developer. I build websites and web apps for
-          people who need them to bring in clients, not just look nice.
-        </p>
-        <p>
-          Three team breakups. A mentor who stepped away 10 days before the
-          finals. I still delivered my client work and finished 4th at
-          Galaksija Kup, with a special prize. When things fall apart, I keep
-          shipping.
-        </p>
-        <p>TODO: where I&apos;m based and which time zones I work with.</p>
-        <p>TODO: a short line on my background and how I got into web development.</p>
-      </div>
-
-      <section aria-labelledby="principles-heading" className="mt-20">
-        <h2 id="principles-heading" className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-          How I work
-        </h2>
-        <ul className="mt-8 grid gap-10 md:grid-cols-3 md:gap-8">
-          {principles.map((principle) => (
-            <li key={principle.title} className="border-t-2 border-foreground pt-6">
-              <h3 className="font-display text-2xl font-bold tracking-tight">
-                {principle.title}
-              </h3>
-              <p className="mt-3 text-muted">{principle.body}</p>
-            </li>
-          ))}
-        </ul>
+      <section aria-label="Background" className="mx-auto max-w-7xl px-5 pb-20 sm:px-8">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+          <div className="space-y-6 text-lg leading-relaxed sm:text-xl">
+            <p>
+              I&apos;m a full-stack developer who builds across platforms:
+              websites, web apps, Android and Windows apps, and the servers
+              they run on. Dan Delivers is the name I work under.
+            </p>
+            <p>
+              For 3+ years I&apos;ve taken software from an idea through
+              architecture, implementation and release, including publishing
+              on Google Play and the Microsoft Store.
+            </p>
+            <p>
+              Three team breakups. A mentor who stepped away 10 days before the
+              finals. I still delivered my client work and finished 4th at
+              Galaksija Kup, with a special prize. When things fall apart, I
+              keep shipping.
+            </p>
+            <p className="text-muted">
+              I work remotely with clients in Serbia and internationally, in
+              English or Serbian. And if your business needs a five-page
+              website, I won&apos;t sell you a distributed microservice
+              architecture.
+            </p>
+          </div>
+          <dl className="grid h-fit grid-cols-1 gap-px bg-line sm:grid-cols-2">
+            {facts.map((fact) => (
+              <div key={fact.label} className="flex flex-col-reverse bg-surface p-6">
+                <dt className="mt-2 text-sm text-muted">{fact.label}</dt>
+                <dd className="font-display text-3xl leading-none text-accent uppercase">
+                  {fact.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </section>
 
-      <section
-        aria-labelledby="contact-heading"
-        className="mt-20 rounded-3xl bg-foreground p-8 text-background sm:p-12"
-      >
-        <h2 id="contact-heading" className="font-display text-3xl font-extrabold tracking-tight sm:text-5xl">
-          {site.headline}
-        </h2>
-        <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-          <BookCallButton location="about" />
-          <ContactLinks
-            location="about"
-            className="flex flex-wrap gap-x-5 gap-y-2 font-medium"
-            linkClassName="underline underline-offset-4 hover:text-accent"
-          />
+      <section aria-labelledby="principles-heading" className="border-t border-line">
+        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
+          <h2
+            id="principles-heading"
+            className="font-display text-5xl leading-[0.9] tracking-tight uppercase sm:text-6xl"
+          >
+            How I work
+          </h2>
+          <ol className="mt-10 grid gap-6 md:grid-cols-3">
+            {principles.map((principle, index) => (
+              <li key={principle.title} className="border-2 border-line p-6">
+                <span className="font-display text-5xl text-accent">{index + 1}</span>
+                <h3 className="mt-3 text-xl font-bold">{principle.title}</h3>
+                <p className="mt-2 text-muted">{principle.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section aria-labelledby="press-heading" className="bg-surface">
+        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
+          <h2
+            id="press-heading"
+            className="font-display text-5xl leading-[0.9] tracking-tight uppercase sm:text-6xl"
+          >
+            Press &amp; recognition
+          </h2>
+          <p className="mt-4 text-muted">
+            Coverage and official results for {site.fullName}. Not endorsements.
+          </p>
+          <ul className="mt-10 divide-y divide-line border-y border-line">
+            {press.map((item) => (
+              <li key={item.url}>
+                <a
+                  href={item.url}
+                  className="group flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-8"
+                >
+                  <span className="w-56 shrink-0 font-display text-2xl tracking-wide uppercase group-hover:text-accent">
+                    {item.source}
+                  </span>
+                  <span className="flex-1">{item.headline}</span>
+                  <span className="text-xs font-bold tracking-[0.2em] text-muted uppercase">
+                    {item.kind} · {item.year}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section aria-labelledby="contact-heading">
+        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+          <h2
+            id="contact-heading"
+            className="font-display text-[clamp(2.75rem,9vw,7rem)] leading-[0.85] tracking-tight uppercase"
+          >
+            {site.headline}
+          </h2>
+          <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-6">
+            <BookCallButton location="about" />
+            <ContactLinks
+              location="about"
+              className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold tracking-wide uppercase"
+              linkClassName="hover:text-accent"
+            />
+          </div>
         </div>
       </section>
     </article>

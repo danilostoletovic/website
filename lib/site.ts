@@ -12,7 +12,7 @@ export const site = {
   bookingUrl: "#TODO-booking-url",
   // TODO: X/Twitter handle (e.g. "@handle") for twitter:site. Left empty,
   // the tag is omitted.
-  twitterHandle: "",
+  twitterHandle: "" as string,
 } as const;
 
 export type ContactLink = {

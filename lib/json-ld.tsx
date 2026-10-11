@@ -17,11 +17,11 @@ export function personJsonLd() {
   return {
     "@type": "Person",
     "@id": `${site.url}/about#person`,
-    name: site.owner,
-    alternateName: "Dan",
-    jobTitle: "Freelance web developer",
+    name: site.fullName,
+    alternateName: [site.owner, "Dan", site.name],
+    jobTitle: "Freelance developer",
     url: `${site.url}/about`,
-    // Only real profile URLs; TODO placeholders are skipped.
+    email: site.email,
     sameAs: contactLinks
       .map((link) => link.href)
       .filter((href) => href.startsWith("https://")),

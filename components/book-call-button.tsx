@@ -15,14 +15,16 @@ export function BookCallButton({
   label = "Book a call",
 }: BookCallButtonProps) {
   const sizing =
-    size === "sm" ? "px-4 py-2 text-sm" : "px-7 py-4 text-base sm:text-lg";
+    size === "sm"
+      ? "px-4 py-2 text-base"
+      : "px-8 py-4 text-2xl shadow-[6px_6px_0_0_var(--foreground)] hover:shadow-[3px_3px_0_0_var(--foreground)] hover:translate-x-[3px] hover:translate-y-[3px] sm:text-3xl";
 
   return (
     <TrackedLink
       href={site.bookingUrl}
       event={analyticsEvents.ctaClick}
       eventProperties={{ cta: "book-call", location }}
-      className={`inline-flex items-center justify-center rounded-full bg-accent font-semibold text-accent-ink transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground ${sizing}`}
+      className={`inline-flex items-center justify-center bg-accent font-display tracking-wide text-accent-ink uppercase transition focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-foreground ${sizing}`}
     >
       {label}
     </TrackedLink>

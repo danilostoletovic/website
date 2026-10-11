@@ -46,6 +46,7 @@ export function pageMetadata({
     },
     twitter: {
       card: "summary_large_image",
+      ...(site.twitterHandle ? { site: site.twitterHandle } : {}),
       title: socialTitle,
       description,
       images: [ogImage],

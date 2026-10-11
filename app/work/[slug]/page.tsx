@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookCallButton } from "@/components/book-call-button";
 import { TrackCaseStudyView } from "@/components/track-case-study-view";
+import { TrackedLink } from "@/components/tracked-link";
 import { caseStudies, getCaseStudy } from "@/content/case-studies";
 import { getService } from "@/content/services";
+import { analyticsEvents } from "@/lib/analytics";
 import { pageMetadata } from "@/lib/metadata";
+import { site } from "@/lib/site";
 
 export const ensureStatic = "navigation";
 
@@ -21,7 +23,7 @@ export async function generateMetadata({
   if (!caseStudy) return {};
 
   return pageMetadata({
-    title: caseStudy.title,
+    title: caseStudy.seoTitle,
     description: caseStudy.summary,
     path: `/work/${caseStudy.slug}`,
     draft: caseStudy.draft,
@@ -45,56 +47,104 @@ export default async function CaseStudyPage({
     .filter((service) => service !== undefined);
 
   return (
-    <article className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+    <article>
       <TrackCaseStudyView slug={caseStudy.slug} />
-      <header className="max-w-4xl">
-        <p className="text-sm font-semibold tracking-[0.2em] text-accent uppercase">
-          Case study · {caseStudy.client}
+      <header className="mx-auto max-w-7xl px-5 pt-14 pb-16 sm:px-8 sm:pt-20">
+        <p className="inline-block bg-accent px-2 py-1 text-sm font-bold tracking-[0.2em] text-accent-ink uppercase">
+          Case study
         </p>
-        <h1 className="mt-4 font-display text-[clamp(2.25rem,7vw,5.5rem)] leading-[0.95] font-extrabold tracking-[-0.04em] text-balance">
+        <p className="mt-6 text-sm font-bold tracking-[0.2em] text-muted uppercase">
+          {caseStudy.client}
+        </p>
+        <h1 className="mt-3 max-w-6xl font-display text-[clamp(2.5rem,7vw,6rem)] leading-[0.9] tracking-tight uppercase">
           {caseStudy.title}
         </h1>
       </header>
 
-      <div className="mt-16 max-w-3xl space-y-14">
-        {sections.map((section) => (
-          <section key={section.id} aria-labelledby={`${section.id}-heading`}>
-            <h2
-              id={`${section.id}-heading`}
-              className="font-display text-3xl font-bold tracking-tight"
-            >
-              {section.heading}
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed sm:text-xl">{section.body}</p>
-          </section>
-        ))}
-      </div>
-
-      {relatedServices.length > 0 && (
-        <p className="mt-16 text-muted">
-          Service:{" "}
-          {relatedServices.map((service, index) => (
-            <span key={service.slug}>
-              {index > 0 && ", "}
-              <Link
-                href={`/services/${service.slug}`}
-                className="font-semibold text-foreground underline underline-offset-4 hover:text-accent"
+      <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-8">
+        <ol className="max-w-4xl space-y-16">
+          {sections.map((section, index) => (
+            <li key={section.id}>
+              <section
+                aria-labelledby={`${section.id}-heading`}
+                className="grid gap-4 sm:grid-cols-[5rem_1fr]"
               >
-                {service.seoTitle}
-              </Link>
-            </span>
+                <span aria-hidden="true" className="font-display text-6xl leading-none text-accent">
+                  {index + 1}
+                </span>
+                <div>
+                  <h2
+                    id={`${section.id}-heading`}
+                    className="font-display text-4xl tracking-tight uppercase"
+                  >
+                    {section.heading}
+                  </h2>
+                  <p className="mt-4 text-lg leading-relaxed sm:text-xl">{section.body}</p>
+                </div>
+              </section>
+            </li>
           ))}
-        </p>
-      )}
+        </ol>
 
-      <div className="mt-16 rounded-3xl bg-foreground p-8 text-background sm:p-12">
-        <p className="font-display text-3xl font-extrabold tracking-tight sm:text-5xl">
-          Got a similar problem?
-        </p>
-        <div className="mt-8">
-          <BookCallButton location={`case-study-${caseStudy.slug}`} />
-        </div>
+        {caseStudy.links.length > 0 && (
+          <section aria-labelledby="evidence-heading" className="mt-16 max-w-4xl sm:pl-20">
+            <h2
+              id="evidence-heading"
+              className="text-xs font-bold tracking-[0.2em] text-muted uppercase"
+            >
+              Check it yourself
+            </h2>
+            <ul className="mt-4 flex flex-wrap gap-4">
+              {caseStudy.links.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="inline-block border-2 border-foreground px-4 py-2 font-semibold hover:border-accent hover:text-accent"
+                  >
+                    {link.label} <span aria-hidden="true">↗</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {relatedServices.length > 0 && (
+          <p className="mt-12 text-muted sm:pl-20">
+            Related service:{" "}
+            {relatedServices.map((service, index) => (
+              <span key={service.slug}>
+                {index > 0 && ", "}
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="font-semibold text-foreground underline decoration-accent decoration-2 underline-offset-4 hover:text-accent"
+                >
+                  {service.seoTitle}
+                </Link>
+              </span>
+            ))}
+          </p>
+        )}
       </div>
+
+      <section aria-labelledby="similar-heading" className="bg-accent text-accent-ink">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-16 sm:px-8 md:flex-row md:items-center md:justify-between">
+          <h2
+            id="similar-heading"
+            className="font-display text-5xl leading-[0.9] tracking-tight uppercase sm:text-6xl"
+          >
+            Got a similar problem?
+          </h2>
+          <TrackedLink
+            href={site.bookingUrl}
+            event={analyticsEvents.ctaClick}
+            eventProperties={{ cta: "book-call", location: `case-study-${caseStudy.slug}` }}
+            className="inline-flex items-center justify-center bg-accent-ink px-8 py-4 font-display text-2xl tracking-wide text-foreground uppercase hover:bg-surface sm:text-3xl"
+          >
+            Book a call
+          </TrackedLink>
+        </div>
+      </section>
     </article>
   );
 }

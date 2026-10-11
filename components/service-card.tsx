@@ -11,17 +11,23 @@ export function ServiceCard({
   return (
     <Link
       href={`/services/${service.slug}`}
-      className="group flex h-full flex-col border-t-2 border-foreground pt-6 transition-colors hover:border-accent"
+      className="group flex h-full flex-col border-2 border-line bg-surface p-7 transition-colors hover:border-accent"
     >
-      <span className="font-display text-sm font-bold text-muted">
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <h3 className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-        {service.title}
-      </h3>
-      <p className="mt-4 flex-1 text-muted">{service.summary}</p>
-      <span className="mt-6 font-semibold group-hover:text-accent">
-        {service.seoTitle} <span aria-hidden="true">→</span>
+      <div className="flex items-baseline justify-between gap-4">
+        <span className="font-display text-5xl text-accent">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <span className="text-xs font-bold tracking-[0.2em] text-muted uppercase">
+          {service.seoTitle}
+        </span>
+      </div>
+      <p className="mt-6 font-display text-3xl leading-none tracking-tight uppercase">
+        &ldquo;{service.audience}&rdquo;
+      </p>
+      <h3 className="mt-4 text-xl font-bold">{service.title}</h3>
+      <p className="mt-3 flex-1 text-muted">{service.summary}</p>
+      <span className="mt-8 font-display text-xl tracking-wide uppercase group-hover:text-accent">
+        That&apos;s me <span aria-hidden="true">→</span>
       </span>
     </Link>
   );

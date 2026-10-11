@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BookCallButton } from "@/components/book-call-button";
+import { CaseStudyCard } from "@/components/case-study-card";
 import { caseStudies } from "@/content/case-studies";
 import { getService, services } from "@/content/services";
 import { JsonLd, personJsonLd } from "@/lib/json-ld";
@@ -41,7 +41,7 @@ export default async function ServicePage({
   );
 
   return (
-    <article className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+    <article>
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -50,48 +50,63 @@ export default async function ServicePage({
           description: service.summary,
           url: `${site.url}/services/${service.slug}`,
           serviceType: service.seoTitle,
+          areaServed: "Worldwide",
           provider: personJsonLd(),
         }}
       />
-      <header className="max-w-4xl">
-        <p className="text-sm font-semibold tracking-[0.2em] text-accent uppercase">
+
+      <header className="mx-auto max-w-7xl px-5 pt-14 pb-16 sm:px-8 sm:pt-20">
+        <p className="inline-block bg-accent px-2 py-1 text-sm font-bold tracking-[0.2em] text-accent-ink uppercase">
           {service.seoTitle}
         </p>
-        <h1 className="mt-4 font-display text-[clamp(2.5rem,8vw,6rem)] leading-[0.95] font-extrabold tracking-[-0.04em] text-balance">
+        <p className="mt-6 font-display text-3xl tracking-wide text-muted uppercase sm:text-4xl">
+          &ldquo;{service.audience}&rdquo;
+        </p>
+        <h1 className="mt-3 font-display text-[clamp(3rem,10vw,8rem)] leading-[0.85] tracking-tight uppercase">
           {service.title}
         </h1>
-        <p className="mt-8 border-l-4 border-accent pl-5 text-lg leading-relaxed sm:text-xl">
+        <p className="mt-10 max-w-3xl border-l-8 border-accent pl-6 text-xl leading-relaxed sm:text-2xl">
           {service.problem}
         </p>
+        <p className="mt-6 max-w-3xl text-lg text-muted italic">{service.quip}</p>
       </header>
 
-      <div className="mt-16 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 pb-20 sm:px-8 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
         <section aria-labelledby="included-heading">
-          <h2 id="included-heading" className="font-display text-3xl font-bold tracking-tight">
-            What&apos;s included
+          <h2
+            id="included-heading"
+            className="font-display text-4xl tracking-tight uppercase sm:text-5xl"
+          >
+            What you get
           </h2>
-          <ul className="mt-6 divide-y divide-line border-y border-line">
+          <ul className="mt-8 divide-y divide-line border-y border-line">
             {service.included.map((item) => (
-              <li key={item} className="py-4 text-lg">
+              <li key={item} className="flex gap-4 py-4 text-lg">
+                <span aria-hidden="true" className="font-display text-accent">
+                  ✓
+                </span>
                 {item}
               </li>
             ))}
           </ul>
         </section>
 
-        <aside aria-label="Timeline and price" className="h-fit rounded-3xl bg-surface p-8 ring-1 ring-line">
+        <aside
+          aria-label="Timeline and price"
+          className="h-fit border-4 border-accent bg-surface p-8"
+        >
           <dl className="space-y-6">
             <div>
-              <dt className="text-sm font-semibold tracking-[0.2em] text-muted uppercase">
-                Typical timeline
+              <dt className="text-xs font-bold tracking-[0.2em] text-muted uppercase">
+                Timeline
               </dt>
-              <dd className="mt-2 font-display text-2xl font-bold">{service.timeline}</dd>
+              <dd className="mt-2 text-lg">{service.timeline}</dd>
             </div>
             <div>
-              <dt className="text-sm font-semibold tracking-[0.2em] text-muted uppercase">
-                Starting price
+              <dt className="text-xs font-bold tracking-[0.2em] text-muted uppercase">
+                How it&apos;s priced
               </dt>
-              <dd className="mt-2 font-display text-2xl font-bold">{service.price}</dd>
+              <dd className="mt-2 text-lg">{service.price}</dd>
             </div>
           </dl>
           <div className="mt-8">
@@ -101,22 +116,22 @@ export default async function ServicePage({
       </div>
 
       {related.length > 0 && (
-        <section aria-labelledby="related-heading" className="mt-20">
-          <h2 id="related-heading" className="font-display text-3xl font-bold tracking-tight">
-            Related work
-          </h2>
-          <ul className="mt-6 space-y-3">
-            {related.map((caseStudy) => (
-              <li key={caseStudy.slug}>
-                <Link
-                  href={`/work/${caseStudy.slug}`}
-                  className="text-lg font-semibold underline decoration-2 underline-offset-8 hover:text-accent"
-                >
-                  {caseStudy.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <section aria-labelledby="related-heading" className="border-t border-line bg-surface">
+          <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
+            <h2
+              id="related-heading"
+              className="font-display text-4xl tracking-tight uppercase sm:text-5xl"
+            >
+              Proof I&apos;ve done this
+            </h2>
+            <ul className="mt-8 grid gap-6 md:grid-cols-2">
+              {related.map((caseStudy) => (
+                <li key={caseStudy.slug}>
+                  <CaseStudyCard caseStudy={caseStudy} />
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
       )}
     </article>
