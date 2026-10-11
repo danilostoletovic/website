@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BookCallButton } from "@/components/book-call-button";
+import { CalBookingButton } from "@/components/cal-booking-button";
 import { CaseStudyCard } from "@/components/case-study-card";
 import { HeroHeadline } from "@/components/hero-headline";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
 import { TrackedLink } from "@/components/tracked-link";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 import { caseStudies } from "@/content/case-studies";
 import { award, press, testimonials } from "@/content/proof";
 import { services } from "@/content/services";
@@ -59,6 +61,8 @@ export default function Home() {
                   See my work
                 </TrackedLink>
               </div>
+              <WhatsAppButton location="hero" className="mt-8" />
+              <p className="mt-4 text-sm text-muted">Usually replies within a few hours.</p>
             </div>
 
             <div className="flex items-start lg:justify-end">
@@ -206,7 +210,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="cta-heading">
+      <section aria-labelledby="cta-heading" id="contact" className="scroll-mt-20">
         <div className="mx-auto max-w-7xl px-5 py-24 text-center sm:px-8 sm:py-36">
           <h2
             id="cta-heading"
@@ -219,16 +223,24 @@ export default function Home() {
             Tell me the problem. No technical spec needed. I&apos;ll tell you
             straight whether I can fix it.
           </p>
-          <div className="mt-10 flex flex-col items-center gap-6">
-            <BookCallButton location="final-cta" />
-            <TrackedLink
-              href={`mailto:${site.email}`}
-              event={analyticsEvents.contactClick}
-              eventProperties={{ channel: "Email", location: "final-cta" }}
-              className="text-lg font-semibold underline underline-offset-4 hover:text-accent"
-            >
-              or email {site.email}
-            </TrackedLink>
+          <div className="mt-10 flex flex-col items-center">
+            <CalBookingButton location="final-cta" />
+            <p className="mt-5 text-sm font-bold tracking-[0.2em] text-muted uppercase">
+              Pick a time, no signup needed.
+            </p>
+            <WhatsAppButton location="final-cta" className="mt-10" />
+            <p className="mt-4 text-sm text-muted">Usually replies within a few hours.</p>
+            <p className="mt-10 text-lg">
+              Prefer to write?{" "}
+              <TrackedLink
+                href={`mailto:${site.email}`}
+                event={analyticsEvents.contactClick}
+                eventProperties={{ channel: "Email", location: "final-cta" }}
+                className="font-semibold wrap-anywhere underline decoration-accent decoration-2 underline-offset-4 hover:text-accent"
+              >
+                Email me at {site.email}
+              </TrackedLink>
+            </p>
           </div>
         </div>
       </section>

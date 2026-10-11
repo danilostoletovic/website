@@ -8,12 +8,22 @@ export const site = {
   url: "https://dandelivers.com",
   headline: "Got a plan? Dan's your man.",
   email: "contact@danilostoletovic.com",
-  // TODO: real booking link (Cal.com, Calendly, ...)
-  bookingUrl: "#TODO-booking-url",
+  // Cal.com username/path. The contact section opens it as a popup; every
+  // other "Book a call" button links to bookingUrl.
+  calLink: "danilo-stoletovic-uhxzlu",
+  bookingUrl: "https://cal.com/danilo-stoletovic-uhxzlu",
+  // WhatsApp username. To use a phone number instead, put the digits only
+  // (country code included; no +, spaces or dashes). The only place to change.
+  whatsapp: "dandelivers",
   // TODO: X/Twitter handle (e.g. "@handle") for twitter:site. Left empty,
   // the tag is omitted.
   twitterHandle: "" as string,
 } as const;
+
+// Prefilled first message for WhatsApp chats started from the site.
+export const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
+  `Hi ${site.name}, I found you via your website`,
+)}`;
 
 export type ContactLink = {
   label: string;
