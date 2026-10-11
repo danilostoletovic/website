@@ -8,8 +8,8 @@ export const site = {
   email: "contact@danilostoletovic.com",
   // Cal.com username/path. The contact section opens it as a popup; every
   // other "Book a call" button links to bookingUrl.
-  calLink: "danilo-stoletovic-uhxzlu",
-  bookingUrl: "https://cal.com/danilo-stoletovic-uhxzlu",
+  calLink: "dandelivers",
+  bookingUrl: "https://cal.com/dandelivers",
   // WhatsApp username. To use a phone number instead, put the digits only
   // (country code included; no +, spaces or dashes). The only place to change.
   whatsapp: "dandelivers",
