@@ -1,13 +1,17 @@
 export type Service = {
   slug: string;
+  // The visitor's situation, in their words. Card eyebrow.
+  audience: string;
   // Card heading and page H1.
   title: string;
   // Used in the <title> tag, so phrase it the way clients search.
   seoTitle: string;
   // Card text and meta description.
   summary: string;
-  // The client's problem, in their words.
+  // The client's problem.
   problem: string;
+  // One honest, slightly funny line.
+  quip: string;
   included: string[];
   timeline: string;
   price: string;
@@ -18,57 +22,73 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "website-design-and-development",
-    title: "A website that brings in clients",
+    audience: "I just need a website.",
+    title: "A website that does its job",
     seoTitle: "Website design and development",
     summary:
-      "Your site looks fine but the phone doesn't ring. I build a fast, clear website that turns visitors into enquiries.",
+      "A fast, responsive site that explains what you do and makes the next step easy: an enquiry, a booking or a purchase.",
     problem:
-      "You've got a business worth talking about, but your website is slow, dated or hard to use, so people leave before they ever get in touch.",
+      "You need a first website, a redesign or a landing page. It should explain what you do and make getting in touch easy, without turning into a huge software project.",
+    quip: "Your opening hours probably don't need their own engineering department.",
     included: [
-      "TODO: confirm: page design and copy structure",
-      "TODO: confirm: build, launch and hosting setup",
-      "TODO: confirm: basic SEO so people can find you",
-      "TODO: confirm: contact form or booking link",
+      "Responsive build for phones, tablets and desktop",
+      "Clear navigation, readable content and accessible interactions",
+      "Fast pages and performance-conscious images",
+      "SEO foundations: titles, descriptions, canonical URLs, internal links and a sitemap",
+      "Contact forms, booking services and API connections",
+      "Domain, DNS, hosting and business email setup",
+      "Deployment, source handover and maintenance guidance",
     ],
-    timeline: "TODO: typical timeline",
-    price: "TODO: starting price or range",
-    draft: true,
+    timeline:
+      "Agreed before I start, based on pages, content and integrations.",
+    price:
+      "Quoted per project. It depends on content, number of pages, integrations and support.",
+    draft: false,
   },
   {
     slug: "web-app-development",
-    title: "A web app that does the work for you",
-    seoTitle: "Web app development",
+    audience: "I run a business.",
+    title: "Software that fits the way you work",
+    seoTitle: "Custom web apps and AI integrations",
     summary:
-      "Spreadsheets and copy-paste are eating your week. I build the web app that handles it, so you can get back to the actual job.",
+      "Spreadsheets, disconnected tools or an off-the-shelf product getting in the way? I build the app, integration or AI feature around the job you actually do.",
     problem:
-      "Part of your business runs on spreadsheets, email threads and manual steps. It works, until it doesn't, and it eats hours every week.",
+      "Part of your business runs on spreadsheets, copy-paste and tools that don't talk to each other. An internal tool can organise information, connect APIs or remove repeated data entry. First I compare an existing product, a small integration and a custom build, and only build what solves the actual problem.",
+    quip: "You probably didn't start a business because you love configuring DNS.",
     included: [
-      "TODO: confirm: scoping call to map the workflow",
-      "TODO: confirm: design and build of the app",
-      "TODO: confirm: accounts, data and integrations you need",
-      "TODO: confirm: launch and handover",
+      "Web interfaces and backend APIs for a defined workflow",
+      "Integrations with services you're authorised to use",
+      "Practical AI features: assistants, API integrations and automation",
+      "A scoped prototype, a testable release and source handover",
     ],
-    timeline: "TODO: typical timeline",
-    price: "TODO: starting price or range",
-    draft: true,
+    timeline:
+      "The smallest useful first release, with checkpoints where you see working software.",
+    price:
+      "Depends on scope. I review the fit before we agree on price and timing.",
+    draft: false,
   },
   {
-    slug: "website-redesign",
-    title: "A redesign that fixes what's not working",
-    seoTitle: "Website redesign",
+    slug: "mobile-app-development",
+    audience: "I have an idea.",
+    title: "From idea to Play Store",
+    seoTitle: "Android and Flutter app development",
     summary:
-      "Your current site is holding you back. I rebuild it around what your clients need, without losing what already works.",
+      "You have a product in mind. I take it from prototype or MVP through development, integration and Google Play preparation.",
     problem:
-      "Your site was built a while ago. It's slow on phones, hard to update and doesn't reflect what you do now.",
+      "You have a product in mind and need someone to turn it into software people can actually use, from the first prototype to a release.",
+    quip: "The idea is the easy part. Annoyingly, the app still needs building.",
     included: [
-      "TODO: confirm: review of the current site",
-      "TODO: confirm: new design and rebuild",
-      "TODO: confirm: content and redirects carried over",
-      "TODO: confirm: launch without losing search rankings",
+      "Flutter and native Android apps",
+      "Multiplatform applications",
+      "APIs and backend integration",
+      "Practical AI features",
+      "Deployment and Google Play preparation (store approval is up to the store)",
     ],
-    timeline: "TODO: typical timeline",
-    price: "TODO: starting price or range",
-    draft: true,
+    timeline:
+      "Agreed up front, from prototype or MVP to release, with checkpoints along the way.",
+    price:
+      "Depends on scope. I review the idea before we agree on price and timing.",
+    draft: false,
   },
 ];
 
