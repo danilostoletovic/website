@@ -31,7 +31,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "smart-vehicle",
     title:
       "The camera was holding up the steering. I split the system, and it placed 4th nationally.",
-    seoTitle: "Smart Vehicle: Android-controlled robot car case study",
+    seoTitle: "Smart Vehicle: YOLO robot car",
     client: "Own project · Galaksija Cup 2026",
     summary:
       "A Raspberry Pi 5 vehicle with YOLO vision and an Android control app. Separating vision from control kept it drivable, and it earned 4th place and a Special Award at the 10th Galaksija Cup.",
@@ -56,7 +56,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "ai-secretary",
     title:
       "Visitors didn't know what to ask for. Now an AI guide answers from approved facts.",
-    seoTitle: "AI website assistant integration case study",
+    seoTitle: "AI website assistant case study",
     client: "Own project · AI integration",
     summary:
       "A website assistant that helps visitors find the right service, answers only from curated public facts, and hands them to a real person by email.",

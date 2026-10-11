@@ -52,7 +52,7 @@ export const services: Service[] = [
     slug: "web-app-development",
     audience: "I run a business.",
     title: "Software that fits the way you work",
-    seoTitle: "Custom web apps and AI integrations",
+    seoTitle: "Web apps & AI integrations",
     summary:
       "Spreadsheets, disconnected tools or an off-the-shelf product getting in the way? I build the app, integration or AI feature around the job you actually do.",
     problem:
@@ -75,7 +75,7 @@ export const services: Service[] = [
     slug: "mobile-app-development",
     audience: "I have an idea.",
     title: "From idea to Play Store",
-    seoTitle: "Android and Flutter app development",
+    seoTitle: "Android & Flutter app developer",
     summary:
       "You have a product in mind. I take it from prototype or MVP through development, integration and Google Play preparation.",
     problem:
