@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { BookCallButton } from "@/components/book-call-button";
+import { ContactLinks } from "@/components/contact-links";
 import { JsonLd, personJsonLd } from "@/lib/json-ld";
 import { pageMetadata } from "@/lib/metadata";
-import { contactLinks, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export const ensureStatic = "navigation";
 
@@ -86,15 +87,11 @@ export default function AboutPage() {
         </h2>
         <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
           <BookCallButton location="about" />
-          <ul className="flex flex-wrap gap-x-5 gap-y-2 font-medium">
-            {contactLinks.map((link) => (
-              <li key={link.label}>
-                <a href={link.href} className="underline underline-offset-4 hover:text-accent">
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <ContactLinks
+            location="about"
+            className="flex flex-wrap gap-x-5 gap-y-2 font-medium"
+            linkClassName="underline underline-offset-4 hover:text-accent"
+          />
         </div>
       </section>
     </article>

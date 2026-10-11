@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { contactLinks, site } from "@/lib/site";
+import { ContactLinks } from "@/components/contact-links";
+import { site } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -14,15 +15,11 @@ export function SiteFooter() {
             Freelance web development by {site.owner}.
           </p>
         </div>
-        <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
-          {contactLinks.map((link) => (
-            <li key={link.label}>
-              <a href={link.href} className="underline-offset-4 hover:text-accent hover:underline">
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <ContactLinks
+          location="footer"
+          className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium"
+          linkClassName="underline-offset-4 hover:text-accent hover:underline"
+        />
       </div>
     </footer>
   );

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BookCallButton } from "@/components/book-call-button";
+import { TrackCaseStudyView } from "@/components/track-case-study-view";
 import { caseStudies, getCaseStudy } from "@/content/case-studies";
 import { getService } from "@/content/services";
 import { pageMetadata } from "@/lib/metadata";
@@ -45,6 +46,7 @@ export default async function CaseStudyPage({
 
   return (
     <article className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+      <TrackCaseStudyView slug={caseStudy.slug} />
       <header className="max-w-4xl">
         <p className="text-sm font-semibold tracking-[0.2em] text-accent uppercase">
           Case study · {caseStudy.client}

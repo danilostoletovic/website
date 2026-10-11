@@ -5,8 +5,10 @@ import { CaseStudyCard } from "@/components/case-study-card";
 import { HeroHeadline } from "@/components/hero-headline";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
+import { TrackedLink } from "@/components/tracked-link";
 import { caseStudies } from "@/content/case-studies";
 import { services } from "@/content/services";
+import { analyticsEvents } from "@/lib/analytics";
 import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
@@ -55,12 +57,14 @@ export default function Home() {
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
               <BookCallButton location="hero" />
-              <a
+              <TrackedLink
                 href="#work"
+                event={analyticsEvents.ctaClick}
+                eventProperties={{ cta: "see-my-work", location: "hero" }}
                 className="font-semibold underline decoration-2 underline-offset-8 hover:text-accent"
               >
                 See my work
-              </a>
+              </TrackedLink>
             </div>
           </div>
         </div>
