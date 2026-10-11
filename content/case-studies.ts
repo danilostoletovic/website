@@ -22,6 +22,8 @@ export type CaseStudy = {
   services: string[];
   // Drafts render but are noindexed and left out of the sitemap.
   draft: boolean;
+  // Last real content change (YYYY-MM-DD); used as the sitemap lastModified.
+  updatedAt: string;
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -48,6 +50,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     services: ["mobile-app-development"],
     draft: false,
+    updatedAt: "2026-10-11",
   },
   {
     slug: "ai-secretary",
@@ -66,6 +69,7 @@ export const caseStudies: CaseStudy[] = [
     links: [],
     services: ["web-app-development"],
     draft: false,
+    updatedAt: "2026-10-11",
   },
 ];
 

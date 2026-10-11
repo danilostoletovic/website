@@ -17,6 +17,8 @@ export type Service = {
   price: string;
   // Drafts render but are noindexed and left out of the sitemap.
   draft: boolean;
+  // Last real content change (YYYY-MM-DD); used as the sitemap lastModified.
+  updatedAt: string;
 };
 
 export const services: Service[] = [
@@ -44,6 +46,7 @@ export const services: Service[] = [
     price:
       "Quoted per project. It depends on content, number of pages, integrations and support.",
     draft: false,
+    updatedAt: "2026-10-11",
   },
   {
     slug: "web-app-development",
@@ -66,6 +69,7 @@ export const services: Service[] = [
     price:
       "Depends on scope. I review the fit before we agree on price and timing.",
     draft: false,
+    updatedAt: "2026-10-11",
   },
   {
     slug: "mobile-app-development",
@@ -89,6 +93,7 @@ export const services: Service[] = [
     price:
       "Depends on scope. I review the idea before we agree on price and timing.",
     draft: false,
+    updatedAt: "2026-10-11",
   },
 ];
 

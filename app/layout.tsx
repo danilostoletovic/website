@@ -25,6 +25,17 @@ export const metadata: Metadata = {
   },
   description:
     "Freelance developer Danilo Stoletovic builds fast, clean websites, web apps and Android apps that bring in clients, delivered on time.",
+  // Self-referencing fallback: a page that doesn't set its own canonical
+  // (every real page does, through pageMetadata()) points to itself.
+  alternates: { canonical: "./" },
+  // Search engine ownership tags, set as Vercel env vars. A tag is omitted
+  // while its value is empty. Read at build time, so redeploy after changing.
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    other: process.env.BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
+      : undefined,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
