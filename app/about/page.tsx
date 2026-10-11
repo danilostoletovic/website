@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { BookCallButton } from "@/components/book-call-button";
 import { ContactLinks } from "@/components/contact-links";
 import { award, press } from "@/content/proof";
@@ -82,16 +83,26 @@ export default function AboutPage() {
               architecture.
             </p>
           </div>
-          <dl className="grid h-fit grid-cols-1 gap-px bg-line sm:grid-cols-2">
-            {facts.map((fact) => (
-              <div key={fact.label} className="flex flex-col-reverse bg-surface p-6">
-                <dt className="mt-2 text-sm text-muted">{fact.label}</dt>
-                <dd className="font-display text-3xl leading-none text-accent uppercase">
-                  {fact.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <div className="space-y-6">
+            <Image
+              src="/dan-delivers.webp"
+              alt="Illustration of Dan pointing at the viewer in front of his code editor, next to the slogan “Got a plan? Dan’s your man.”"
+              width={1254}
+              height={1254}
+              sizes="(min-width: 1280px) 560px, (min-width: 1024px) 42vw, 100vw"
+              className="h-auto w-full border-4 border-accent"
+            />
+            <dl className="grid h-fit grid-cols-1 gap-px bg-line sm:grid-cols-2">
+              {facts.map((fact) => (
+                <div key={fact.label} className="flex flex-col-reverse bg-surface p-6">
+                  <dt className="mt-2 text-sm text-muted">{fact.label}</dt>
+                  <dd className="font-display text-3xl leading-none text-accent uppercase">
+                    {fact.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
       </section>
 
