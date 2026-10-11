@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dan Delivers
 
-## Getting Started
+**Got a plan? Dan's your man.**
 
-First, run the development server:
+Source for [dandelivers.com](https://dandelivers.com), the sales and portfolio site of Dan Delivers: freelance developer Danilo Stoletović building websites, custom web apps, AI integrations and Android apps for clients in Serbia and internationally.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The site's job is to get Dan hired: show the services, prove them with case studies, press and client words, and make contact effortless. Visitors can book a call through Cal.com, message on WhatsApp, or send an email.
+
+## Stack
+
+- [Next.js](https://nextjs.org) 16 (App Router, TypeScript, Cache Components), React 19
+- Tailwind CSS v4, fonts via `next/font` (Anton for display, Geist for body)
+- [Bun](https://bun.sh) as package manager and script runner (Next.js itself runs on Node)
+- [PostHog](https://posthog.com) analytics through a same-origin `/ingest` proxy
+- [Cal.com](https://cal.com) booking popup (`@calcom/embed-react`), loaded on demand
+- Hosted on [Vercel](https://vercel.com)
+
+## Getting started
+
+```sh
+bun install
+bun run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Command | What it does |
+| --- | --- |
+| `bun run dev` | Development server |
+| `bun run build` | Production build |
+| `bun run start` | Serve the production build |
+| `bun run lint --max-warnings 0` | Lint; must pass with zero warnings |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`bun run lint --max-warnings 0` and `bun run build` must both pass before every commit.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment variables
 
-## Learn More
+Analytics stays off unless these are set. Add them to `.env.local` for local work and in the Vercel dashboard for deployments. Never commit them.
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Value |
+| --- | --- |
+| `NEXT_PUBLIC_POSTHOG_KEY` | PostHog project API key (`phc_…`) |
+| `NEXT_PUBLIC_POSTHOG_HOST` | `https://us.i.posthog.com` or `https://eu.i.posthog.com` |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Where things live
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Path | Contents |
+| --- | --- |
+| `lib/site.ts` | Brand name, headline, URL, email, Cal.com link, WhatsApp handle, social links |
+| `content/services.ts` | Services (each becomes `/services/<slug>`) |
+| `content/case-studies.ts` | Case studies (each becomes `/work/<slug>`) |
+| `content/proof.ts` | Testimonials, press and awards |
+| `app/` | Pages, layout, theme (`globals.css`), sitemap, robots and OG image |
+| `components/` | Shared UI |
 
-## Deploy on Vercel
+To add a service or case study, add an entry to its `content/` file. The page, sitemap entry and structured data follow automatically. Entries with `draft: true` render but are hidden from search engines.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## SEO
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `app/sitemap.ts` generates `/sitemap.xml` from `content/`, so it always matches the published pages.
+- `app/robots.ts` generates `/robots.txt`. Only the Vercel production deployment (`VERCEL_ENV=production`) can be indexed; preview deployments and local builds block all crawlers.
+- Every page has its own title, description and canonical URL, plus a generated social card (`app/opengraph-image.tsx`). Structured data: `Person` on About, `Service` on service pages.
+
+## Deployment
+
+Vercel builds every push. The production branch deploys to dandelivers.com; other branches get preview URLs.
+
+## Working with AI coding agents
+
+Project rules for agents (brand, voice, content and design rules) live in [`AGENTS.md`](AGENTS.md). `CLAUDE.md` imports it.
