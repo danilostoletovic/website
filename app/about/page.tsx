@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import { BookCallButton } from "@/components/book-call-button";
 import { JsonLd, personJsonLd } from "@/lib/json-ld";
+import { pageMetadata } from "@/lib/metadata";
 import { contactLinks, site } from "@/lib/site";
 
 export const ensureStatic = "navigation";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: { absolute: `About ${site.owner} | ${site.name}` },
   description:
     "I'm Danilo Stoletovic, a freelance web developer. No agency overhead, no handoffs: you work directly with me from first call to launch.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 const principles = [
   {

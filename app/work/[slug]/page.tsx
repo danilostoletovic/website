@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { BookCallButton } from "@/components/book-call-button";
 import { caseStudies, getCaseStudy } from "@/content/case-studies";
 import { getService } from "@/content/services";
+import { pageMetadata } from "@/lib/metadata";
 
 export const ensureStatic = "navigation";
 
@@ -18,11 +19,12 @@ export async function generateMetadata({
   const caseStudy = getCaseStudy(slug);
   if (!caseStudy) return {};
 
-  return {
+  return pageMetadata({
     title: caseStudy.title,
     description: caseStudy.summary,
-    alternates: { canonical: `/work/${caseStudy.slug}` },
-  };
+    path: `/work/${caseStudy.slug}`,
+    draft: caseStudy.draft,
+  });
 }
 
 export default async function CaseStudyPage({

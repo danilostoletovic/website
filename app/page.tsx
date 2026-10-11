@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { BookCallButton } from "@/components/book-call-button";
 import { CaseStudyCard } from "@/components/case-study-card";
@@ -6,6 +7,15 @@ import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
 import { caseStudies } from "@/content/case-studies";
 import { services } from "@/content/services";
+import { pageMetadata } from "@/lib/metadata";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = pageMetadata({
+  title: { absolute: `${site.name} | Web development by ${site.owner}` },
+  description:
+    "Freelance web developer Danilo Stoletovic builds fast, clean websites and web apps that bring in clients, delivered on time. Book a call.",
+  path: "/",
+});
 
 const proofPoints = [
   {
