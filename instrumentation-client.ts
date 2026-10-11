@@ -10,6 +10,10 @@ if (key) {
       api_host: posthogProxyPath,
       ui_host: posthogUiHost,
       defaults: "2026-08-30",
+      // Send uncaught errors to PostHog error tracking, a signal source for
+      // the self-driving inbox. Session replay is switched on in PostHog's
+      // project settings, not here.
+      capture_exceptions: true,
     });
   } catch (error) {
     console.error("PostHog failed to initialise", error);
