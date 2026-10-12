@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { BookCallButton } from "@/components/book-call-button";
 import { CaseStudyCard } from "@/components/case-study-card";
 import { caseStudies } from "@/content/case-studies";
-import { getService, services } from "@/content/services";
+import { getService, serviceQuestions, services } from "@/content/services";
 import { JsonLd, personJsonLd } from "@/lib/json-ld";
 import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
@@ -37,7 +37,7 @@ export default async function ServicePage({
   if (!service) notFound();
 
   const related = caseStudies.filter((caseStudy) =>
-    caseStudy.services.includes(service.slug),
+    !caseStudy.draft && caseStudy.services.includes(service.slug),
   );
 
   return (
@@ -69,6 +69,10 @@ export default async function ServicePage({
           {service.problem}
         </p>
         <p className="mt-6 max-w-3xl text-lg text-muted italic">{service.quip}</p>
+        <div className="mt-8">
+          <BookCallButton location={`service-${service.slug}-hero`} />
+          <p className="mt-4 max-w-xl text-base text-muted">{site.callDescription}</p>
+        </div>
       </header>
 
       <div className="mx-auto grid max-w-7xl gap-12 px-5 pb-20 sm:px-8 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
@@ -111,10 +115,25 @@ export default async function ServicePage({
           </dl>
           <div className="mt-8">
             <BookCallButton location={`service-${service.slug}`} />
+            <p className="mt-5 text-base text-muted">{site.callDescription}</p>
           </div>
         </aside>
       </div>
 
+      <section aria-labelledby="questions-heading" className="border-t border-line">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
+          <h2 id="questions-heading" className="font-display text-4xl uppercase sm:text-5xl">Before you hire me</h2>
+          <p className="mt-4 max-w-2xl text-muted">The practical details, before a project becomes a project.</p>
+          <div className="mt-8 max-w-4xl divide-y divide-line border-y border-line">
+            {serviceQuestions.map((item) => (
+              <details key={item.question} className="py-5">
+                <summary className="cursor-pointer text-xl font-bold">{item.question}</summary>
+                <p className="mt-4 max-w-3xl text-lg text-muted">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
       {related.length > 0 && (
         <section aria-labelledby="related-heading" className="border-t border-line bg-surface">
           <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">

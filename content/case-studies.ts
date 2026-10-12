@@ -39,7 +39,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "smart-vehicle",
     title:
-      "The camera was holding up the steering. I split the system, and it placed 4th nationally.",
+      "Camera lag fixed. A robot car that placed 4th nationally.",
     seoTitle: "Smart Vehicle: YOLO robot car",
     client: "Own project · Galaksija Cup 2026",
     summary:
@@ -77,8 +77,9 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "ai-secretary",
+    images: [{ src: "/work/secretary-interface.jpg", alt: "Website assistant offering service guidance and a direct email handoff", width: 440, height: 680 }],
     title:
-      "Visitors didn't know what to ask for. Now an AI guide answers from approved facts.",
+      "Unsure visitors get an AI guide grounded in approved facts.",
     seoTitle: "AI website assistant case study",
     client: "Own project · AI integration",
     summary:
@@ -92,12 +93,12 @@ export const caseStudies: CaseStudy[] = [
     links: [],
     services: ["web-app-development"],
     draft: false,
-    updatedAt: "2026-10-11",
+    updatedAt: "2026-10-12",
   },
   {
     slug: "class-timetable",
     title:
-      "Rotating school weeks broke ordinary timetables. One app now runs on Windows, Android and the web.",
+      "Rotating school weeks, organised across three platforms.",
     seoTitle: "Class Timetable: Flutter app",
     client: "Own project · Cross-platform app",
     summary:
@@ -140,12 +141,12 @@ export const caseStudies: CaseStudy[] = [
     ],
     services: ["mobile-app-development"],
     draft: false,
-    updatedAt: "2026-09-07",
+    updatedAt: "2026-10-12",
   },
   {
     slug: "autodark",
     title:
-      "Switching Windows between light and dark by hand is a chore. One button now does it by the sun, and nothing stays running.",
+      "Windows theme switching, automated without a background app.",
     seoTitle: "AutoDark: Windows theme switcher",
     client: "Own project · Windows app",
     summary:
@@ -164,12 +165,13 @@ export const caseStudies: CaseStudy[] = [
     ],
     services: ["web-app-development"],
     draft: false,
-    updatedAt: "2026-10-08",
+    updatedAt: "2026-10-12",
   },
   {
     slug: "promptui",
+    images: [{ src: "/work/promptui.png", alt: "PromptUI demo with starter tasks for decisions, plans, learning and data exploration", width: 1845, height: 921 }],
     title:
-      "Chat gives you a wall of text, even when you need a table. PromptUI lets the AI build the right interface for each task.",
+      "Beyond walls of chat: AI builds the interface for the task.",
     seoTitle: "PromptUI: AI-generated interfaces",
     client: "Own project · AI integration (beta)",
     summary:
@@ -192,7 +194,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     services: ["web-app-development"],
     draft: false,
-    updatedAt: "2026-09-26",
+    updatedAt: "2026-10-12",
   },
 ];
 

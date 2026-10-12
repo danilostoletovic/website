@@ -20,9 +20,9 @@ export function WhatsAppButton({
       aria-label="Message Dan Delivers on WhatsApp"
       event={analyticsEvents.contactClick}
       eventProperties={{ channel: "WhatsApp", location }}
-      className={`inline-flex items-center justify-center gap-3 rounded-xl border-2 border-foreground px-6 py-3 font-display text-xl tracking-wide uppercase transition-colors hover:border-accent hover:text-accent focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-foreground sm:text-2xl ${className}`}
+      className={`inline-flex items-center justify-center gap-3 rounded-xl border border-line bg-surface px-5 py-3 text-base font-semibold text-muted transition-colors hover:border-muted hover:text-foreground focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-foreground ${className}`}
     >
-      <WhatsAppIcon className="size-7 shrink-0" />
+      <WhatsAppIcon className="size-5 shrink-0" />
       Message on WhatsApp
     </TrackedLink>
   );

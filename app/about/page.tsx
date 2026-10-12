@@ -38,6 +38,30 @@ const principles = [
   },
 ];
 
+// Facts from the existing portfolio's About and "What the tools are for" sections.
+const capabilities = [
+  {
+    title: "Apps people can use",
+    body: "I build Android, Windows and cross-platform applications, with APIs and integrations behind them. My work includes Google Play and Microsoft Store release preparation.",
+    tools: "Kotlin, Jetpack Compose, Flutter, Dart, WinUI and C#",
+  },
+  {
+    title: "Websites that connect the dots",
+    body: "I build responsive websites and backend services, with SEO foundations and the practical setup around them: domains, business email, forms and booking flows.",
+    tools: "HTML, CSS, JavaScript, React, Node.js and Python",
+  },
+  {
+    title: "The systems behind the screen",
+    body: "I provision and administer Linux servers, including a Hetzner Cloud VPS over SSH. Networking, deployment and troubleshooting are part of the job, along with Docker, reverse proxies and edge deployments.",
+    tools: "Linux, systemd, Raspberry Pi, Docker, GitHub Actions, Cloudflare and Vercel",
+  },
+  {
+    title: "AI with a practical job",
+    body: "I build API integrations, assistants and automation. My website assistant uses a separate Cloudflare Worker, while Smart Vehicle runs computer vision on a Raspberry Pi. The tool has to solve a real problem.",
+    tools: "AI APIs, Cloudflare Workers and on-device computer vision",
+  },
+];
+
 export default function AboutPage() {
   return (
     <article>
@@ -69,6 +93,11 @@ export default function AboutPage() {
               For 3+ years I&apos;ve taken software from an idea through
               architecture, implementation and release, including publishing
               on Google Play and the Microsoft Store.
+            </p>
+            <p>
+              I&apos;m a final-year Electrical &amp; Computer Science student at
+              ETS Nikola Tesla in Nis, with a 5.00 GPA. Building working software
+              is how I connect the theory to the real world.
             </p>
             <p>
               Three team breakups. A mentor who stepped away 10 days before the
@@ -106,6 +135,30 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section aria-labelledby="experience-heading" className="border-t border-line">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+          <h2 id="experience-heading" className="font-display text-4xl uppercase sm:text-5xl">
+            From the app to the server.
+          </h2>
+          <p className="mt-5 max-w-3xl text-lg text-muted">
+            My work spans the interface people use and the systems that keep it
+            running. I&apos;m open to freelance projects, engineering advisory
+            and technical collaborations.
+          </p>
+          <dl className="mt-10 grid gap-x-12 gap-y-10 md:grid-cols-2">
+            {capabilities.map((capability) => (
+              <div key={capability.title} className="border-t border-line pt-6">
+                <dt className="text-2xl font-bold">{capability.title}</dt>
+                <dd className="mt-4 text-lg text-muted">
+                  <p>{capability.body}</p>
+                  <p className="mt-4 text-base"><span className="font-semibold text-foreground">Tools I use: </span>{capability.tools}.</p>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
       <section aria-labelledby="principles-heading" className="border-t border-line">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
           <h2
@@ -130,7 +183,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
           <h2
             id="press-heading"
-            className="font-display text-5xl leading-none tracking-normal uppercase sm:text-6xl"
+            className="scroll-mt-32 font-display text-5xl leading-none tracking-normal uppercase sm:text-6xl"
           >
             Press &amp; recognition
           </h2>
@@ -166,6 +219,7 @@ export default function AboutPage() {
           >
             {site.headline}
           </h2>
+          <p className="mt-6 max-w-xl text-base text-muted">{site.callDescription}</p>
           <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-6">
             <BookCallButton location="about" />
             <ContactLinks

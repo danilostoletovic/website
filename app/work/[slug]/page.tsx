@@ -63,32 +63,8 @@ export default async function CaseStudyPage({
       </header>
 
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-8">
-        <ol className="max-w-4xl space-y-16">
-          {sections.map((section, index) => (
-            <li key={section.id}>
-              <section
-                aria-labelledby={`${section.id}-heading`}
-                className="grid gap-4 sm:grid-cols-[5rem_1fr]"
-              >
-                <span aria-hidden="true" className="font-display text-6xl leading-none text-accent">
-                  {index + 1}
-                </span>
-                <div>
-                  <h2
-                    id={`${section.id}-heading`}
-                    className="font-display text-4xl tracking-normal uppercase"
-                  >
-                    {section.heading}
-                  </h2>
-                  <p className="mt-4 text-lg leading-relaxed sm:text-xl">{section.body}</p>
-                </div>
-              </section>
-            </li>
-          ))}
-        </ol>
-
         {caseStudy.images && caseStudy.images.length > 0 && (
-          <section aria-labelledby="screens-heading" className="mt-16">
+          <section aria-labelledby="screens-heading" className="mb-16">
             <h2
               id="screens-heading"
               className="text-xs font-bold tracking-[0.2em] text-muted uppercase"
@@ -119,6 +95,30 @@ export default async function CaseStudyPage({
             </ul>
           </section>
         )}
+
+        <ol className="max-w-4xl space-y-16">
+          {sections.map((section, index) => (
+            <li key={section.id}>
+              <section
+                aria-labelledby={`${section.id}-heading`}
+                className="grid gap-4 sm:grid-cols-[5rem_1fr]"
+              >
+                <span aria-hidden="true" className="font-display text-6xl leading-none text-accent">
+                  {index + 1}
+                </span>
+                <div>
+                  <h2
+                    id={`${section.id}-heading`}
+                    className="font-display text-4xl tracking-normal uppercase"
+                  >
+                    {section.heading}
+                  </h2>
+                  <p className="mt-4 text-lg leading-relaxed sm:text-xl">{section.body}</p>
+                </div>
+              </section>
+            </li>
+          ))}
+        </ol>
 
         {caseStudy.links.length > 0 && (
           <section aria-labelledby="evidence-heading" className="mt-16 max-w-4xl sm:pl-20">

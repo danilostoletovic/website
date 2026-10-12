@@ -10,6 +10,8 @@ export const site = {
   // other "Book a call" button links to bookingUrl.
   calLink: "dandelivers",
   bookingUrl: "https://cal.com/dandelivers",
+  callDescription: "Tell me the problem. I'll explain the possible approach and the next step, before any work is agreed.",
+  // TODO: Confirm the booking duration before displaying it.
   // WhatsApp username. To use a phone number instead, put the digits only
   // (country code included; no +, spaces or dashes). The only place to change.
   whatsapp: "dandelivers",

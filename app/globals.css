@@ -76,12 +76,6 @@ h2.font-display.text-accent {
   }
 }
 
-/* Subtle orange paint outline around cream lettering. */
-.paint-outline {
-  -webkit-text-stroke: 0.035em #ff7a1a;
-  paint-order: stroke fill;
-}
-
 /* "As seen in" marquee: two identical lists side by side, sliding one list's
    width loops seamlessly. Pauses on hover and focus so links stay clickable. */
 .press-marquee {
@@ -128,6 +122,7 @@ h2.font-display.text-accent {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .press-marquee {
     animation: none;
   }
@@ -192,4 +187,11 @@ h2.font-display.text-accent {
     0.04em 0.04em 0 var(--extrude),
     0.06em 0.06em 0 var(--extrude),
     0.08em 0.08em 0 var(--extrude);
+}
+
+@layer base {
+  a:focus-visible, summary:focus-visible, button:focus-visible {
+    outline: 3px solid var(--foreground);
+    outline-offset: 5px;
+  }
 }

@@ -46,7 +46,7 @@ function loadCal() {
 // attributes instead, and the link navigation is cancelled.
 export function CalBookingButton({
   location,
-  label = "Book a 15-min call",
+  label = "Book a call",
 }: {
   location: string;
   label?: string;

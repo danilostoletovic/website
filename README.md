@@ -9,7 +9,7 @@ The site's job is to get Dan hired: show the services, prove them with case stud
 ## Stack
 
 - [Next.js](https://nextjs.org) 16 (App Router, TypeScript, Cache Components), React 19
-- Tailwind CSS v4, fonts via `next/font` (Anton for display, Geist for body)
+- Tailwind CSS v4, fonts via `next/font` (Lilita One for display, Source Sans 3 for body)
 - [Bun](https://bun.sh) as package manager and script runner (Next.js itself runs on Node)
 - [PostHog](https://posthog.com) analytics through a same-origin `/ingest` proxy
 - [Cal.com](https://cal.com) booking popup (`@calcom/embed-react`), loaded on demand

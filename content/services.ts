@@ -24,7 +24,7 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "website-design-and-development",
-    audience: "I just need a website.",
+    audience: "I need a website.",
     title: "A website that does its job",
     seoTitle: "Website design and development",
     summary:
@@ -46,11 +46,11 @@ export const services: Service[] = [
     price:
       "Quoted per project. It depends on content, number of pages, integrations and support.",
     draft: false,
-    updatedAt: "2026-10-11",
+    updatedAt: "2026-10-12",
   },
   {
     slug: "web-app-development",
-    audience: "I run a business.",
+    audience: "My tools don't talk to each other.",
     title: "Software that fits the way you work",
     seoTitle: "Web apps & AI integrations",
     summary:
@@ -69,11 +69,11 @@ export const services: Service[] = [
     price:
       "Depends on scope. I review the fit before we agree on price and timing.",
     draft: false,
-    updatedAt: "2026-10-11",
+    updatedAt: "2026-10-12",
   },
   {
     slug: "mobile-app-development",
-    audience: "I have an idea.",
+    audience: "I have an app idea.",
     title: "From idea to Play Store",
     seoTitle: "Android & Flutter app developer",
     summary:
@@ -93,10 +93,17 @@ export const services: Service[] = [
     price:
       "Depends on scope. I review the idea before we agree on price and timing.",
     draft: false,
-    updatedAt: "2026-10-11",
+    updatedAt: "2026-10-12",
   },
 ];
 
 export function getService(slug: string): Service | undefined {
   return services.find((service) => service.slug === slug);
 }
+
+export const serviceQuestions = [
+  { question: "Do I need all the content ready?", answer: "Bring what you have: the problem, any existing site or tool, and the content you already use. Before work starts, I identify what is missing and agree who supplies copy, images and other assets. Copywriting and custom illustration need their own agreed scope." },
+  { question: "Do I get the source code?", answer: "Source handover is part of the service. Before starting, I agree the deliverables and ownership terms, including any third-party software or assets with their own licences." },
+  { question: "What costs continue after launch?", answer: "Depending on the project, domains, hosting, business email, paid services and AI usage may have recurring costs. I identify the services the project needs and discuss those costs separately from the build before agreeing the scope." },
+  { question: "What about maintenance and later changes?", answer: "I discuss maintenance and handover before launch. Support, new features and changes beyond the agreed scope are quoted separately; ongoing support is something to agree, rather than assume." },
+];

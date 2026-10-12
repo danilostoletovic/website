@@ -1,6 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { BookCallButton } from "@/components/book-call-button";
+import { TrackedLink } from "@/components/tracked-link";
+import { analyticsEvents } from "@/lib/analytics";
+import { site } from "@/lib/site";
 
 const MIN = 100;
 const MAX = 2500;
@@ -57,15 +61,29 @@ const clamp = (number: number) =>
   Math.min(MAX, Math.max(MIN, Math.round(number / STEP) * STEP));
 
 export function BudgetSlider() {
+  const [project, setProject] = useState<"site" | "app" | "integration">("site");
   const [value, setValue] = useState(500);
   // What is typed in the number box; may be mid-edit, so it is kept apart.
   const [draft, setDraft] = useState("500");
   const level = [...levels].reverse().find((item) => value >= item.from)!;
   const fill = ((value - MIN) / (MAX - MIN)) * 100;
   const atMax = value === MAX;
+  const projectLabel = project === "site" ? "Website" : project === "app" ? "App" : "Integration";
+  const enquiry = `Hi Dan, I'd like to discuss a ${projectLabel.toLowerCase()} project. My budget is ${euro(value)}${atMax ? " or more" : ""}. The guidance I saw was: ${level[project]}\n\nThe problem I need to solve is: `;
 
   return (
     <div className="rounded-3xl border-2 border-foreground bg-surface p-5 shadow-[8px_8px_0_0_var(--accent)] sm:p-7">
+      <fieldset className="mb-6">
+        <legend className="mb-3 text-base font-bold">First, what do you need?</legend>
+        <div className="flex flex-wrap gap-3">
+          {([{ value: "site", label: "Website" }, { value: "app", label: "App" }, { value: "integration", label: "Integration" }] as const).map((option) => (
+            <label key={option.value} className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-3 text-base ${project === option.value ? "border-foreground bg-background" : "border-line"}`}>
+              <input type="radio" name="project-type" value={option.value} checked={project === option.value} onChange={() => setProject(option.value)} className="accent-foreground" />
+              {option.label}
+            </label>
+          ))}
+        </div>
+      </fieldset>
       <label
         htmlFor="budget"
         className="block text-sm font-bold tracking-[0.2em] text-muted uppercase"
@@ -141,18 +159,12 @@ export function BudgetSlider() {
           {level.title}
         </p>
         <dl className="mt-4 space-y-3 text-base sm:text-lg">
-          {[
-            { label: "Website", text: level.site },
-            { label: "App", text: level.app },
-            { label: "Web integration", text: level.integration },
-          ].map((row) => (
-            <div key={row.label} className="sm:grid sm:grid-cols-[11rem_1fr] sm:gap-4">
-              <dt className="font-display text-xl tracking-wide text-accent uppercase">
-                {row.label}
+            <div className="sm:grid sm:grid-cols-[8rem_1fr] sm:gap-4">
+              <dt className="text-base font-bold text-foreground">
+                {projectLabel}
               </dt>
-              <dd>{row.text}</dd>
+              <dd>{level[project]}</dd>
             </div>
-          ))}
         </dl>
         <p className="mt-3 text-base text-muted sm:text-lg">{level.tradeoff}</p>
         {atMax && (
@@ -166,6 +178,13 @@ export function BudgetSlider() {
         These are budget levels, not quotes. Scope, timeline and price are agreed
         with me directly before any work starts.
       </p>
+      <div className="mt-6 flex flex-wrap items-center gap-5">
+        <BookCallButton location="budget" />
+        <TrackedLink href={`mailto:${site.email}?subject=${encodeURIComponent(`${projectLabel} project enquiry`)}&body=${encodeURIComponent(enquiry)}`} event={analyticsEvents.contactClick} eventProperties={{ channel: "Email", location: "budget", project: projectLabel, budget: String(value) }} className="inline-flex items-center rounded-xl border border-line bg-background px-5 py-3 text-base font-semibold text-muted hover:border-muted hover:text-foreground">
+          Email this scope
+        </TrackedLink>
+      </div>
+      <p className="mt-3 text-sm text-muted">Bring the problem and any budget you have in mind. I&apos;ll help you work out the scope.</p>
     </div>
   );
 }

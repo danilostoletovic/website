@@ -12,7 +12,7 @@ export function HeroHeadline() {
   return (
     <h1 className="font-display text-[clamp(2.75rem,7.5vw,6.25rem)] leading-none tracking-normal uppercase">
       <span className="block">{question}</span>{" "}
-      <span className="paint-outline block">{answer}</span>
+      <span className="block">{answer}</span>
     </h1>
   );
 }
