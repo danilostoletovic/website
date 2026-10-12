@@ -14,11 +14,11 @@ export function CaseStudyCard({
     <Link
       href={`/work/${caseStudy.slug}`}
       tabIndex={tabIndex}
-      className="group flex h-full flex-col rounded-2xl border-2 border-foreground bg-surface p-7 shadow-[6px_6px_0_0_var(--accent)] transition hover:-translate-y-1 hover:shadow-[9px_9px_0_0_var(--accent)] sm:p-7"
+      className="work-card group flex h-full flex-col"
     >
       {image && (
-        <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-lg border border-line bg-background">
-          <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1024px) 560px, (min-width: 768px) 45vw, 90vw" className="object-contain p-3" />
+        <div className="work-image relative mb-6 aspect-[16/10] overflow-hidden border border-line bg-surface">
+          <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1280px) 760px, (min-width: 768px) 60vw, 90vw" className="object-contain p-4 transition-transform duration-500 group-hover:scale-[1.03]" />
         </div>
       )}
       <p className="text-xs font-bold tracking-[0.2em] text-muted uppercase">
@@ -28,7 +28,7 @@ export function CaseStudyCard({
         {caseStudy.title}
       </h3>
       <p className="mt-4 flex-1 text-muted">{caseStudy.summary}</p>
-      <span className="mt-5 font-display text-xl tracking-wide uppercase group-hover:text-accent">
+      <span className="mt-5 font-display text-xl tracking-wide uppercase group-hover:underline group-hover:underline-offset-4">
         See the proof <span aria-hidden="true">→</span>
       </span>
     </Link>

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { BookCallButton } from "@/components/book-call-button";
 import { Wordmark } from "@/components/wordmark";
 
 export function SiteHeader() {
@@ -25,7 +24,6 @@ export function SiteHeader() {
           <Link href="/about" className="hidden hover:text-accent sm:inline">
             About
           </Link>
-          <BookCallButton location="header" size="sm" />
         </nav>
       </div>
       <nav aria-label="Mobile sections" className="flex justify-center gap-5 border-t border-line px-5 text-sm font-semibold md:hidden">
