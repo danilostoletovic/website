@@ -11,7 +11,7 @@ export function ServiceCard({
   return (
     <Link
       href={`/services/${service.slug}`}
-      className="group flex h-full flex-col border-2 border-line bg-surface p-7 transition-colors hover:border-accent"
+      className="group flex h-full flex-col rounded-2xl border-2 border-foreground bg-surface p-7 shadow-[6px_6px_0_0_var(--accent)] transition hover:-translate-y-1 hover:shadow-[9px_9px_0_0_var(--accent)]"
     >
       <div className="flex items-baseline justify-between gap-4">
         <span className="font-display text-5xl text-accent">
@@ -21,7 +21,7 @@ export function ServiceCard({
           {service.seoTitle}
         </span>
       </div>
-      <p className="mt-6 font-display text-3xl leading-none tracking-tight uppercase">
+      <p className="mt-6 font-display text-3xl leading-none tracking-normal uppercase">
         &ldquo;{service.audience}&rdquo;
       </p>
       <h3 className="mt-4 text-xl font-bold">{service.title}</h3>

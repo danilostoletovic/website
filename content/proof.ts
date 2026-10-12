@@ -3,6 +3,8 @@ export type Testimonial = {
   role: string;
   country: string;
   quote: string;
+  // How the client found me; testimonials sharing a channel are bracketed.
+  channel: "Direct outreach" | "Referral";
 };
 
 export type PressItem = {
@@ -24,6 +26,7 @@ export const testimonials: Testimonial[] = [
     name: "Michael Johnson",
     role: "Android app client",
     country: "United States",
+    channel: "Direct outreach",
     quote:
       "Danilo was awesome to work with. I came in with a pretty rough idea of what I wanted, and he turned it into an Android app that actually feels polished and ready to use. Communication was quick, changes were handled without any drama, and he caught a couple things I hadn’t even thought about. Would absolutely work with him again.",
   },
@@ -31,6 +34,7 @@ export const testimonials: Testimonial[] = [
     name: "James Smith",
     role: "Website client",
     country: "United Kingdom",
+    channel: "Direct outreach",
     quote:
       "We needed a new website without turning it into a massive, drawn-out project. Danilo understood the brief quickly, asked sensible questions and just got on with it. The finished site looks great on both desktop and mobile and, importantly, is easy for us to actually use. Very pleased with the result.",
   },
@@ -38,6 +42,7 @@ export const testimonials: Testimonial[] = [
     name: "Anna Müller",
     role: "AI integration client",
     country: "Germany",
+    channel: "Referral",
     quote:
       "Danilo integrated the AI functionality into our existing system and delivered exactly what we discussed. What I appreciated most was that he did not overcomplicate the solution. He explained the technical decisions clearly, tested the integration properly and was reliable throughout the project. The implementation has been stable and works well in our existing workflow.",
   },
@@ -66,10 +71,38 @@ export const press: PressItem[] = [
     year: 2026,
   },
   {
-    source: "Niška Priča",
+    source: "Niska Prica",
     kind: "Press",
-    headline: "Niš students recognised at the Galaksija Cup",
+    headline: "Nis students recognised at the Galaksija Cup",
     url: "https://niskaprica.rs/drustvo/niski-tesla-sa-kolegama-medju-najboljima-u-srbiji/",
+    year: 2026,
+  },
+  {
+    source: "Politika",
+    kind: "Press",
+    headline: "Innovative student solutions: the Smart Vehicle special award",
+    url: "https://www.politika.rs/sr/clanak/744944/inovativna-ucenicka-resenja-svakodnevnih-problema",
+    year: 2026,
+  },
+  {
+    source: "Glas Juga",
+    kind: "Press",
+    headline: "Nis students among the best in Serbia at the Galaksija Cup",
+    url: "https://glasjuga.rs/niski-tesla-sa-kolegama-medju-najboljima-u-srbiji-neorov-timu-srebro-na-galaksija-kupu/",
+    year: 2026,
+  },
+  {
+    source: "TV Zona Plus",
+    kind: "Press",
+    headline: "Local coverage naming Danilo and the Smart Vehicle special award",
+    url: "https://tvzonaplus.rs/ekipi-ets-mija-stanimirovic-srebro-na-galaksija-kupu/",
+    year: 2026,
+  },
+  {
+    source: "Srbija Danas",
+    kind: "Press",
+    headline: "Galaksija Cup 2026 winners and special awards",
+    url: "https://www.sd.rs/biz/obrazovanje/pobednici-galaksija-kupa-2026-logopedski-uredaj-iz-novog-sada-najbolji-nagradeni-i-podvodni-dron-iz-nisa-i-pametna-invalidska-kolica-iz-cacka-2026-04-02",
     year: 2026,
   },
   {

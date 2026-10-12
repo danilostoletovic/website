@@ -13,8 +13,8 @@ export function SiteHeader() {
           aria-label="Main"
           className="flex items-center gap-5 text-sm font-semibold tracking-wide uppercase"
         >
-          <Link href="/#services" className="hidden hover:text-accent md:inline">
-            Services
+          <Link href="/#budget" className="hidden hover:text-accent md:inline">
+            Budget
           </Link>
           <Link href="/#work" className="hidden hover:text-accent md:inline">
             Work

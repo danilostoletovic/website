@@ -12,7 +12,7 @@ export function Wordmark({ size = "md" }: { size?: "md" | "lg" }) {
       <span aria-hidden="true">Dan</span>
       <span
         aria-hidden="true"
-        className="-rotate-2 bg-accent px-1.5 pt-1 pb-0.5 text-accent-ink"
+        className="-rotate-2 rounded-md bg-accent px-1.5 pt-1 pb-0.5 text-accent-ink"
       >
         Delivers
       </span>

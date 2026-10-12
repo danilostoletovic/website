@@ -1,18 +1,18 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { Anton, Geist } from "next/font/google";
+import { Lilita_One, Source_Sans_3 } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bodySans = Source_Sans_3({
+  variable: "--font-body",
   subsets: ["latin", "latin-ext"],
 });
 
-const anton = Anton({
-  variable: "--font-anton",
+const display = Lilita_One({
+  variable: "--font-display-face",
   weight: "400",
   subsets: ["latin", "latin-ext"],
 });
@@ -44,7 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${anton.variable} h-full antialiased`}
+      className={`${bodySans.variable} ${display.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-sans">
         <SiteHeader />

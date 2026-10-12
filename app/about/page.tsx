@@ -20,7 +20,7 @@ const facts = [
   { value: "3+ years", label: "taking software from idea to release" },
   { value: award.short, label: "10th Galaksija Cup National STEM Championship" },
   { value: "2nd place", label: "AI assistant competition, Make IT Day @ MET 2026" },
-  { value: "5.00 GPA", label: "Electrical & Computer Science, ETŠ Nikola Tesla" },
+  { value: "5.00 GPA", label: "Electrical & Computer Science, ETS Nikola Tesla" },
 ];
 
 const principles = [
@@ -47,7 +47,7 @@ export default function AboutPage() {
         <p className="inline-block bg-accent px-2 py-1 text-sm font-bold tracking-[0.2em] text-accent-ink uppercase">
           About
         </p>
-        <h1 className="mt-5 font-display text-[clamp(3rem,11vw,9rem)] leading-[0.85] tracking-tight uppercase">
+        <h1 className="mt-5 font-display text-[clamp(3rem,11vw,9rem)] leading-[1.02] tracking-normal uppercase">
           I&apos;m {site.owner}.{" "}
           <span className="block text-accent">Call me Dan.</span>
         </h1>
@@ -90,7 +90,7 @@ export default function AboutPage() {
               width={1254}
               height={1254}
               sizes="(min-width: 1280px) 560px, (min-width: 1024px) 42vw, 100vw"
-              className="h-auto w-full border-4 border-accent"
+              className="h-auto w-full rounded-3xl border-4 border-accent"
             />
             <dl className="grid h-fit grid-cols-1 gap-px bg-line sm:grid-cols-2">
               {facts.map((fact) => (
@@ -110,13 +110,13 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
           <h2
             id="principles-heading"
-            className="font-display text-5xl leading-[0.9] tracking-tight uppercase sm:text-6xl"
+            className="font-display text-5xl leading-none tracking-normal uppercase sm:text-6xl"
           >
             How I work
           </h2>
           <ol className="mt-10 grid gap-6 md:grid-cols-3">
             {principles.map((principle, index) => (
-              <li key={principle.title} className="border-2 border-line p-6">
+              <li key={principle.title} className="rounded-2xl border-2 border-foreground p-6 shadow-[5px_5px_0_0_var(--accent)]">
                 <span className="font-display text-5xl text-accent">{index + 1}</span>
                 <h3 className="mt-3 text-xl font-bold">{principle.title}</h3>
                 <p className="mt-2 text-muted">{principle.body}</p>
@@ -130,7 +130,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
           <h2
             id="press-heading"
-            className="font-display text-5xl leading-[0.9] tracking-tight uppercase sm:text-6xl"
+            className="font-display text-5xl leading-none tracking-normal uppercase sm:text-6xl"
           >
             Press &amp; recognition
           </h2>
@@ -162,7 +162,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
           <h2
             id="contact-heading"
-            className="font-display text-[clamp(2.75rem,9vw,7rem)] leading-[0.85] tracking-tight uppercase"
+            className="font-display text-[clamp(2.75rem,9vw,7rem)] leading-[1.02] tracking-normal uppercase"
           >
             {site.headline}
           </h2>

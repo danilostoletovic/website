@@ -7,9 +7,9 @@ export const size = { width: ogImage.width, height: ogImage.height };
 export const contentType = "image/png";
 
 // Colours mirror the tokens in app/globals.css.
-const ink = "#101014";
+const ink = "#000000";
 const text = "#f7f5f0";
-const accent = "#ff4a1c";
+const accent = "#ff2b2b";
 
 export default function OpengraphImage() {
   const splitAt = site.headline.indexOf("?") + 1;
@@ -41,7 +41,7 @@ export default function OpengraphImage() {
             {site.headline.slice(splitAt).trim().toUpperCase()}
           </div>
         </div>
-        <div style={{ display: "flex", fontSize: 30, color: "#a8a8b3" }}>
+        <div style={{ display: "flex", fontSize: 30, color: "#c8c8c8" }}>
           {`Websites · Web apps · Android apps · by ${site.owner}`}
         </div>
       </div>

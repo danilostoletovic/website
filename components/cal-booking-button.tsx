@@ -29,8 +29,8 @@ function loadCal() {
         theme: "dark",
         layout: calConfig.layout,
         cssVarsPerTheme: {
-          light: { "cal-brand": "#ff4a1c" },
-          dark: { "cal-brand": "#ff4a1c" },
+          light: { "cal-brand": "#ff2b2b" },
+          dark: { "cal-brand": "#ff2b2b" },
         },
       });
     })
@@ -90,7 +90,7 @@ export function CalBookingButton({
         });
         if (calIsReady()) event.preventDefault();
       }}
-      className="inline-flex items-center justify-center bg-accent px-8 py-4 font-display text-2xl tracking-wide text-accent-ink uppercase shadow-[6px_6px_0_0_var(--foreground)] transition hover:translate-x-0.75 hover:translate-y-0.75 hover:shadow-[3px_3px_0_0_var(--foreground)] focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-foreground sm:text-3xl"
+      className="inline-flex items-center justify-center rounded-xl bg-accent px-8 py-4 font-display text-2xl tracking-wide text-accent-ink uppercase shadow-[6px_6px_0_0_var(--foreground)] transition hover:translate-x-0.75 hover:translate-y-0.75 hover:shadow-[3px_3px_0_0_var(--foreground)] focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-foreground sm:text-3xl"
     >
       {label}
     </a>

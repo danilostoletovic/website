@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TrackCaseStudyView } from "@/components/track-case-study-view";
@@ -56,7 +57,7 @@ export default async function CaseStudyPage({
         <p className="mt-6 text-sm font-bold tracking-[0.2em] text-muted uppercase">
           {caseStudy.client}
         </p>
-        <h1 className="mt-3 max-w-6xl font-display text-[clamp(2.5rem,7vw,6rem)] leading-[0.9] tracking-tight uppercase">
+        <h1 className="mt-3 max-w-6xl font-display text-[clamp(2.5rem,7vw,6rem)] leading-none tracking-normal uppercase">
           {caseStudy.title}
         </h1>
       </header>
@@ -75,7 +76,7 @@ export default async function CaseStudyPage({
                 <div>
                   <h2
                     id={`${section.id}-heading`}
-                    className="font-display text-4xl tracking-tight uppercase"
+                    className="font-display text-4xl tracking-normal uppercase"
                   >
                     {section.heading}
                   </h2>
@@ -85,6 +86,39 @@ export default async function CaseStudyPage({
             </li>
           ))}
         </ol>
+
+        {caseStudy.images && caseStudy.images.length > 0 && (
+          <section aria-labelledby="screens-heading" className="mt-16">
+            <h2
+              id="screens-heading"
+              className="text-xs font-bold tracking-[0.2em] text-muted uppercase"
+            >
+              Screenshots
+            </h2>
+            <ul className="mt-4 flex flex-wrap items-start gap-6">
+              {caseStudy.images.map((image, index) => (
+                <li
+                  key={image.src}
+                  className="reveal"
+                  style={{ "--i": index } as React.CSSProperties}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                    sizes="(min-width: 1024px) 40vw, 90vw"
+                    className={`h-auto rounded-2xl border-2 border-foreground shadow-[6px_6px_0_0_var(--accent)] ${
+                      image.height > image.width
+                        ? "w-64 sm:w-72"
+                        : "w-full max-w-3xl"
+                    }`}
+                  />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {caseStudy.links.length > 0 && (
           <section aria-labelledby="evidence-heading" className="mt-16 max-w-4xl sm:pl-20">
@@ -131,7 +165,7 @@ export default async function CaseStudyPage({
         <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-16 sm:px-8 md:flex-row md:items-center md:justify-between">
           <h2
             id="similar-heading"
-            className="font-display text-5xl leading-[0.9] tracking-tight uppercase sm:text-6xl"
+            className="font-display text-5xl leading-none tracking-normal uppercase sm:text-6xl"
           >
             Got a similar problem?
           </h2>

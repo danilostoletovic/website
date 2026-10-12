@@ -62,7 +62,7 @@ export default async function ServicePage({
         <p className="mt-6 font-display text-3xl tracking-wide text-muted uppercase sm:text-4xl">
           &ldquo;{service.audience}&rdquo;
         </p>
-        <h1 className="mt-3 font-display text-[clamp(3rem,10vw,8rem)] leading-[0.85] tracking-tight uppercase">
+        <h1 className="mt-3 font-display text-[clamp(3rem,10vw,8rem)] leading-[1.02] tracking-normal uppercase">
           {service.title}
         </h1>
         <p className="mt-10 max-w-3xl border-l-8 border-accent pl-6 text-xl leading-relaxed sm:text-2xl">
@@ -75,7 +75,7 @@ export default async function ServicePage({
         <section aria-labelledby="included-heading">
           <h2
             id="included-heading"
-            className="font-display text-4xl tracking-tight uppercase sm:text-5xl"
+            className="font-display text-4xl tracking-normal uppercase sm:text-5xl"
           >
             What you get
           </h2>
@@ -120,7 +120,7 @@ export default async function ServicePage({
           <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
             <h2
               id="related-heading"
-              className="font-display text-4xl tracking-tight uppercase sm:text-5xl"
+              className="font-display text-4xl tracking-normal uppercase sm:text-5xl"
             >
               Proof I&apos;ve done this
             </h2>

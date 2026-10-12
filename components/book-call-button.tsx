@@ -24,7 +24,7 @@ export function BookCallButton({
       href={site.bookingUrl}
       event={analyticsEvents.ctaClick}
       eventProperties={{ cta: "book-call", location }}
-      className={`inline-flex items-center justify-center bg-accent font-display tracking-wide text-accent-ink uppercase transition focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-foreground ${sizing}`}
+      className={`inline-flex items-center justify-center rounded-xl bg-accent font-display tracking-wide text-accent-ink uppercase transition focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-foreground ${sizing}`}
     >
       {label}
     </TrackedLink>

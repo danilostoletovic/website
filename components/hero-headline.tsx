@@ -10,9 +10,9 @@ export function HeroHeadline() {
   const answer = site.headline.slice(splitAt).trim();
 
   return (
-    <h1 className="font-display text-[clamp(3.75rem,15vw,12rem)] leading-[0.85] tracking-tight uppercase">
+    <h1 className="font-display text-[clamp(2.75rem,7.5vw,6.25rem)] leading-none tracking-normal uppercase">
       <span className="block">{question}</span>{" "}
-      <span className="block text-accent">{answer}</span>
+      <span className="paint-outline block">{answer}</span>
     </h1>
   );
 }

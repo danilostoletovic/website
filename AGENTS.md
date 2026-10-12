@@ -30,9 +30,9 @@ Sales and portfolio site for "Dan Delivers", the brand and social handle of Dani
 
 ## Design
 
-- Dark only. Tokens in `app/globals.css`: ink `#101014`, surface `#1C1C22`, text `#F7F5F0`, muted `#A8A8B3`, accent `#FF4A1C`.
+- Dark only. Tokens in `app/globals.css`: ink `#000000` (AMOLED black), surface `#0E0E0E`, text `#F7F5F0`, muted `#C8C8C8`, accent red `#FF2B2B`.
 - The accent fails contrast as small text: use it for large type, buttons, rules and badges. Button text on the accent is ink, never white.
-- Display type: Anton (`font-display`), uppercase, very large. Body: Geist (`font-sans`).
+- Display type: Lilita One (`font-display`), uppercase, cartoon 3D edge on `h1`/`h2`. Body: Source Sans 3 (`font-sans`).
 
 ## Stack
 
@@ -61,7 +61,7 @@ Before every commit, `bun run lint --max-warnings 0` and `bun run build` must bo
 - `lib/site.ts`: name, URL, headline, booking URL, contact links. `lib/metadata.ts`: `pageMetadata()`; every page builds metadata with it, because Next replaces nested `openGraph`/`robots` objects instead of merging them, and a page that sets `openGraph` loses the root OG image.
 - `lib/json-ld.tsx`, `lib/analytics.ts` (event names), `lib/posthog.ts` (proxy hosts).
 - `content/`: typed data (`services.ts`, `case-studies.ts`, `proof.ts`). Pages, the sitemap and JSON-LD all read from it.
-- `components/`: shared UI. Client components are only the tracking leaves (`tracked-link.tsx`, `track-case-study-view.tsx`).
+- `components/`: shared UI. Client components are only the small interactive leaves (`tracked-link.tsx`, `track-case-study-view.tsx`, `proof-carousel.tsx`, `budget-slider.tsx`).
 - To add a service or case study, add an entry to its `content/` file; it renders through `generateStaticParams`. `draft: true` entries render but are noindexed and left out of the sitemap.
 
 ## SEO
